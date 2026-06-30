@@ -1,3 +1,4 @@
+site_url: https://sage-griffin-303b4f.netlify.app
 backend:
   name: git-gateway
   branch: master
