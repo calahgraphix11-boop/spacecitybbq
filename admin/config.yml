@@ -17,3 +17,4 @@ collections:
           - { label: "Hours", name: "hours", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
           - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Hero Photo", name: "hero_photo", widget: "image", required: false }
