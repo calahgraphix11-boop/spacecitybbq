@@ -42,7 +42,7 @@
     <div class="wrap hero-content reveal">
       <span class="hero-eyebrow"><span class="dot"></span><span class="eyebrow">Baytown, TX · Est. 2022 · Pitmaster Logan Glenn</span></span>
       <h1>Hand-crafted, slow-smoked. <em>Out of this world.</em></h1>
-      <p class="lead">Premium meats with Central Texas flair — sold by the half pound, gone by the afternoon. Open Thursday, Friday &amp; Saturday 11 AM – 5 PM or until sold out.</p>
+      <p class="lead">Premium meats with Central Texas flair — sold by the half pound, gone by the afternoon. Open <span id="hero-hours">Thursday, Friday &amp; Saturday 11 AM – 5 PM</span> or until sold out.</p>
       <div class="hero-cats">
         <span class="label">Jump to</span>
         <a href="#menu" class="pill">Brisket</a>
@@ -465,7 +465,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
         </div>
         <h4>Location</h4>
-        <p>7623 FM 3180<br>Baytown, Texas</p>
+        <p><span id="site-location">7623 FM 3180, Baytown, Texas</span></p>
         <p class="visit-sub">Parked and smoking.</p>
         <a href="https://www.google.com/maps/search/?api=1&query=7623+FM+3180+Baytown+TX" target="_blank" rel="noopener" class="link-arrow visit-link">Get directions
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -476,7 +476,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h4>Hours</h4>
-        <p>Thursday · Friday · Saturday<br>11 AM – 5 PM</p>
+        <p><span id="site-hours">Thursday · Friday · Saturday 11 AM – 5 PM</span></p>
         <p class="visit-sub">Or until sold out — and we do sell out. Order ahead or come early.</p>
       </div>
       <div class="visit-card">
@@ -538,6 +538,19 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script>
+    fetch('/_data/settings.json')
+      .then(res => res.json())
+      .then(data => {
+        const hoursEl = document.getElementById('site-hours');
+        const heroHoursEl = document.getElementById('hero-hours');
+        const locationEl = document.getElementById('site-location');
+        if (hoursEl) hoursEl.textContent = data.hours;
+        if (heroHoursEl) heroHoursEl.textContent = data.hours;
+        if (locationEl) locationEl.textContent = data.location;
+      })
+      .catch(err => console.error('Failed to load settings:', err));
+  </script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     if (window.netlifyIdentity) {
