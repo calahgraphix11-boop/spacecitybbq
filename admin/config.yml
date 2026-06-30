@@ -1,4 +1,5 @@
 site_url: https://sage-griffin-303b4f.netlify.app
+
 backend:
   name: git-gateway
   branch: master
@@ -17,4 +18,14 @@ collections:
           - { label: "Hours", name: "hours", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
           - { label: "Phone", name: "phone", widget: "string" }
-          - { label: "Hero Photo", name: "hero_photo", widget: "image", required: false }
+          - { label: "Ribs Photo", name: "photo_dish_ribs", widget: "image", required: false }
+          - { label: "Brisket Category Photo", name: "photo_cat_brisket", widget: "image", required: false }
+          - { label: "Sausage Category Photo", name: "photo_cat_sausage", widget: "image", required: false }
+          - { label: "Plates Category Photo", name: "photo_cat_plates", widget: "image", required: false }
+          - { label: "Pitmaster Portrait", name: "photo_founder_logan", widget: "image", required: false }
+          - { label: "Most Ordered Brisket Feature Photo", name: "photo_feature_brisket", widget: "image", required: false }
+          - { label: "Plates Combo Photo", name: "photo_dish_combo", widget: "image", required: false }
+          - { label: "TX Trinity Box Photo", name: "photo_dish_trinity", widget: "image", required: false }
+          - { label: "Loaded Brisket Nachos Photo", name: "photo_dish_nachos", widget: "image", required: false }
+          - { label: "Burnt Ends Photo", name: "photo_dish_burnt_ends", widget: "image", required: false }
+          - { label: "Prime Brisket Photo", name: "photo_dish_brisket", widget: "image", required: false }

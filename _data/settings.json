@@ -1,5 +1,16 @@
 {
   "hours": "Thursday, Friday & Saturday 11 AM - 5 PM",
   "location": "7623 FM 3180, Baytown, TX",
-  "phone": "(281) 555-0100"
+  "phone": "(281) 555-0100",
+  "photo_dish_ribs": "assets/images/dish-ribs.jpg",
+  "photo_cat_brisket": "assets/images/cat-brisket.jpg",
+  "photo_cat_sausage": "assets/images/cat-sausage.jpg",
+  "photo_cat_plates": "assets/images/cat-plates.jpg",
+  "photo_founder_logan": "assets/images/founder-logan.jpg",
+  "photo_feature_brisket": "assets/images/feature-brisket.jpg",
+  "photo_dish_combo": "assets/images/dish-combo.jpg",
+  "photo_dish_trinity": "assets/images/dish-trinity.jpg",
+  "photo_dish_nachos": "assets/images/dish-nachos.jpg",
+  "photo_dish_burnt_ends": "assets/images/dish-burnt-ends.jpg",
+  "photo_dish_brisket": "assets/images/dish-brisket.jpg"
 }
