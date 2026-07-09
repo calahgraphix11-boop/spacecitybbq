@@ -3,6 +3,8 @@ site_url: https://sage-griffin-303b4f.netlify.app
 backend:
   name: git-gateway
   branch: master
+  identity_url: https://sage-griffin-303b4f.netlify.app/.netlify/identity
+  gateway_url: https://sage-griffin-303b4f.netlify.app/.netlify/git
 
 media_folder: assets/images
 public_folder: /assets/images
