@@ -6,11 +6,13 @@
   <title>Space City BBQ - Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.init({
-        APIUrl: "https://sage-griffin-303b4f.netlify.app/.netlify/identity"
-      });
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init({
+          APIUrl: "https://sage-griffin-303b4f.netlify.app/.netlify/identity"
+        });
+      }
+    });
   </script>
 </head>
 <body>
