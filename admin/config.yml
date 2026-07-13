@@ -20,7 +20,17 @@ collections:
           - { label: "Hours", name: "hours", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
           - { label: "Phone", name: "phone", widget: "string" }
-          - { label: "Specials", name: "specials", widget: "text", required: false, hint: "Short list of current specials, e.g. Brisket plate $18, ribs half rack $22" }
+          - { label: "Status / Alert Message", name: "status_message", widget: "text", required: false, hint: "Shown in the Specials card on the homepage (e.g. a temporary closure). Leave blank to show the default link to Summer Specials instead." }
+          - { label: "Summer Specials", name: "specials_list", widget: "list", required: false, hint: "Shown in the Summer Specials card on the homepage menu.", fields: [
+              { label: "Name", name: "name", widget: "string" },
+              { label: "Price", name: "price", widget: "string", hint: "e.g. $1 each, $14 / 1/2 lb" },
+              { label: "Description", name: "description", widget: "string", required: false }
+            ] }
+          - { label: "Scratch Sides", name: "sides_list", widget: "list", required: false, hint: "Shown in the Scratch Sides list on the homepage menu.", fields: [
+              { label: "Name", name: "name", widget: "string" },
+              { label: "Price", name: "price", widget: "string", required: false, hint: "e.g. $5 medium, $10 large" },
+              { label: "Description", name: "description", widget: "string", required: false }
+            ] }
           - { label: "Ribs Photo", name: "photo_dish_ribs", widget: "image", required: false }
           - { label: "Brisket Category Photo", name: "photo_cat_brisket", widget: "image", required: false }
           - { label: "Sausage Category Photo", name: "photo_cat_sausage", widget: "image", required: false }

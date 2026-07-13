@@ -192,13 +192,7 @@
 
     <div class="menu-category reveal">
       <h3 class="menu-cat-title">Scratch Sides <span class="menu-cat-unit">$5 medium · $10 large — made daily</span></h3>
-      <div class="menu-items menu-items--sides">
-        <div class="menu-item"><span class="menu-item-name">Mac N Cheese</span></div>
-        <div class="menu-item"><span class="menu-item-name">Deviled Potato Salad</span></div>
-        <div class="menu-item"><span class="menu-item-name">Andouille Corn Dressin</span></div>
-        <div class="menu-item"><span class="menu-item-name">Dilly Pickle Mac Salad</span></div>
-        <div class="menu-item"><span class="menu-item-name">Cucumber &amp; Tomato Salad</span></div>
-      </div>
+      <div class="menu-items menu-items--sides" id="sides-items"></div>
     </div>
 
     <div class="menu-category menu-category--special reveal">
@@ -211,36 +205,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="menu-items">
-        <div class="menu-item">
-          <div class="menu-item-header">
-            <span class="menu-item-name">Chicken Wings</span>
-            <span class="menu-item-price">$1 <span class="menu-item-alt">each</span></span>
-          </div>
-          <p class="menu-item-desc">Yes. One dollar. Come early.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-header">
-            <span class="menu-item-name">Tijuana-Style Wings</span>
-            <span class="menu-item-price">$10 <span class="menu-item-alt">/ 6</span></span>
-          </div>
-          <p class="menu-item-desc">Six wings, border-style heat</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-header">
-            <span class="menu-item-name">Piña Colada Burnt Ends</span>
-            <span class="menu-item-price">$14 <span class="menu-item-alt">/ ½ lb</span></span>
-          </div>
-          <p class="menu-item-desc">Sweet heat. Don't ask, just try it.</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-header">
-            <span class="menu-item-name">Tri-Tip Steak, Chimichurri</span>
-            <span class="menu-item-price">$13 <span class="menu-item-alt">/ ½ lb</span></span>
-          </div>
-          <p class="menu-item-desc">Sliced and herbed over the fire</p>
-        </div>
-      </div>
+      <div class="menu-items" id="specials-items"></div>
     </div>
   </section>
 
@@ -484,7 +449,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>
         </div>
         <h4>Specials</h4>
-        <p id="site-specials" style="white-space:pre-line;">Brisket plate $18, ribs half rack $22</p>
+        <p id="site-status">See what's running in <a href="#menu">Summer Specials</a> below.</p>
         <p class="visit-sub">While supplies last — check back often.</p>
       </div>
       <div class="visit-card">
@@ -547,17 +512,40 @@
 
   <script src="js/main.js" defer></script>
   <script>
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+    function renderMenuList(container, items) {
+      if (!container || !Array.isArray(items)) return;
+      container.innerHTML = items.map(item => {
+        const name = escapeHtml(item.name || '');
+        const price = item.price ? escapeHtml(item.price) : '';
+        const desc = item.description ? escapeHtml(item.description) : '';
+        return '<div class="menu-item">' +
+          '<div class="menu-item-header">' +
+            '<span class="menu-item-name">' + name + '</span>' +
+            (price ? '<span class="menu-item-price">' + price + '</span>' : '') +
+          '</div>' +
+          (desc ? '<p class="menu-item-desc">' + desc + '</p>' : '') +
+        '</div>';
+      }).join('');
+    }
     fetch('/_data/settings.json')
       .then(res => res.json())
       .then(data => {
         const hoursEl = document.getElementById('site-hours');
         const heroHoursEl = document.getElementById('hero-hours');
         const locationEl = document.getElementById('site-location');
-        const specialsEl = document.getElementById('site-specials');
+        const statusEl = document.getElementById('site-status');
         if (hoursEl) hoursEl.textContent = data.hours;
         if (heroHoursEl) heroHoursEl.textContent = data.hours;
         if (locationEl) locationEl.textContent = data.location;
-        if (specialsEl && data.specials) specialsEl.textContent = data.specials;
+        if (statusEl && data.status_message) {
+          statusEl.textContent = data.status_message;
+          statusEl.style.whiteSpace = 'pre-line';
+        }
+        renderMenuList(document.getElementById('specials-items'), data.specials);
+        renderMenuList(document.getElementById('sides-items'), data.sides);
         document.querySelectorAll('[data-photo]').forEach(img => {
           const val = data['photo_' + img.dataset.photo];
           if (val) img.src = val;
