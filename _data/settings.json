@@ -6,25 +6,46 @@
   "photo_feature_brisket": "assets/images/feature-brisket.jpg",
   "phone": "(713) 823-8742",
   "hours": "Thursday, Friday & Saturday 11 AM - 5 PM",
-  "status_message": "Closed for 2 weeks for maternity leave",
-  "specials": [
-    { "name": "Chicken Wings", "price": "$1 each", "description": "Yes. One dollar. Come early." },
-    { "name": "Tijuana-Style Wings", "price": "$10 / 6", "description": "Six wings, border-style heat" },
-    { "name": "Piña Colada Burnt Ends", "price": "$14 / ½ lb", "description": "Sweet heat. Don't ask, just try it." },
-    { "name": "Tri-Tip Steak, Chimichurri", "price": "$13 / ½ lb", "description": "Sliced and herbed over the fire" }
-  ],
-  "sides": [
-    { "name": "Mac N Cheese", "price": "", "description": "" },
-    { "name": "Deviled Potato Salad", "price": "", "description": "" },
-    { "name": "Andouille Corn Dressin", "price": "", "description": "" },
-    { "name": "Dilly Pickle Mac Salad", "price": "", "description": "" },
-    { "name": "Cucumber & Tomato Salad", "price": "", "description": "" }
-  ],
   "photo_cat_plates": "assets/images/cat-plates.jpg",
   "photo_dish_trinity": "assets/images/dish-trinity.jpg",
   "photo_dish_nachos": "assets/images/dish-nachos.jpg",
   "photo_founder_logan": "assets/images/founder-logan.jpg",
   "location": "7623 FM 3180, Baytown, TX",
   "photo_dish_combo": "assets/images/dish-combo.jpg",
+  "status_message": "Closed for 2 weeks for maternity leave",
+  "specials": [
+    {
+      "name": "Pepper Jelly pork belly Burnt Ends",
+      "price": "$14 / ½ lb",
+      "description": "Sweet heat. Don't ask, just try it."
+    }
+  ],
+  "sides": [
+    {
+      "name": "Mac N Cheese",
+      "price": "",
+      "description": ""
+    },
+    {
+      "name": "Deviled Potato Salad",
+      "price": "",
+      "description": ""
+    },
+    {
+      "name": "Jalapeño Corn bake",
+      "price": "",
+      "description": ""
+    },
+    {
+      "name": "Creole red beans & rice",
+      "price": "",
+      "description": ""
+    },
+    {
+      "name": "Cucumber & Tomato Salad",
+      "price": "",
+      "description": ""
+    }
+  ],
   "photo_cat_sausage": "assets/images/cat-sausage.jpg"
 }
