@@ -571,6 +571,9 @@
   <button id="aiLineCallBtn" style="background:#e63946;color:#fff;border:none;padding:14px 22px;font-size:15px;border-radius:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
     Call our AI line
   </button>
+  <button id="aiLineHangupBtn" style="display:none;background:#555;color:#fff;border:none;padding:14px 22px;font-size:15px;border-radius:12px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+    Hang Up
+  </button>
   <div id="aiLineStatus" style="margin-top:8px;font-size:13px;color:#555;text-align:center;"></div>
 </div>
 
@@ -579,7 +582,9 @@
   (function () {
     const statusEl = document.getElementById('aiLineStatus');
     const btn = document.getElementById('aiLineCallBtn');
+    const hangupBtn = document.getElementById('aiLineHangupBtn');
     let device;
+    let activeCall;
 
     async function setup() {
       const res = await fetch('https://spacecity-ai-line-calahgraphix11-8151s-projects.vercel.app/api/token');
@@ -590,9 +595,20 @@
     btn.onclick = async () => {
       if (!device) await setup();
       statusEl.textContent = 'Calling...';
-      const call = await device.connect();
-      call.on('accept', () => (statusEl.textContent = 'Connected, talk now'));
-      call.on('disconnect', () => (statusEl.textContent = 'Call ended'));
+      btn.style.display = 'none';
+      hangupBtn.style.display = 'inline-block';
+      activeCall = await device.connect();
+      activeCall.on('accept', () => (statusEl.textContent = 'Connected, talk now'));
+      activeCall.on('disconnect', () => {
+        statusEl.textContent = 'Call ended';
+        btn.style.display = 'inline-block';
+        hangupBtn.style.display = 'none';
+        activeCall = null;
+      });
+    };
+
+    hangupBtn.onclick = () => {
+      if (activeCall) activeCall.disconnect();
     };
   })();
 </script>
